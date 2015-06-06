@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="InflateParams">
+        <ignore path="src/com/example/demo/adapter/ClassifyMoreAdapter.java" />
+    </issue>
+    <issue id="ResourceAsColor">
+        <ignore path="src/com/example/demo/adapter/ClassifyMainAdapter.java" />
+        <ignore path="src/com/example/demo/adapter/SearchMainAdapter.java" />
+    </issue>
+</lint>
