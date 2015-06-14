@@ -6,7 +6,6 @@ import java.util.Map;
 import com.example.demo.R;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -60,9 +59,9 @@ public class ClassifyMainAdapter extends BaseAdapter {
 					.get("img").toString()));
 		}
 		hold.txt.setText(list.get(arg0).get("txt").toString());
-		hold.layout.setBackgroundColor(Color.parseColor("#ffebebeb"));
+		hold.layout.setBackgroundColor(0xFFEBEBEB);
 		if (arg0 == position) {
-			hold.layout.setBackgroundColor(Color.parseColor("#ffffffff"));
+			hold.layout.setBackgroundColor(0xFFFFFFFF);
 		}
 		return view;
 	}

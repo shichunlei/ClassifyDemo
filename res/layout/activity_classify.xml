@@ -4,6 +4,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:background="#ffedcb21"
+        android:gravity="center"
+        android:text="二级列表"
+        android:textSize="16sp" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

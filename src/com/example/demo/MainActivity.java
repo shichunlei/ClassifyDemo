@@ -1,80 +1,42 @@
 package com.example.demo;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import com.example.demo.adapter.*;
-
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.AdapterView.OnItemClickListener;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
 public class MainActivity extends Activity {
 
-	private ListView mainlist;
-	private ListView morelist;
-	private List<Map<String, Object>> mainList;
-	ClassifyMainAdapter mainAdapter;
-	ClassifyMoreAdapter moreAdapter;
+	Button listlistview, listgridview;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_classify);
-		initModle();
-		initView();
-	}
+		setContentView(R.layout.activity_main);
+		listlistview = (Button) findViewById(R.id.listlist);
+		listgridview = (Button) findViewById(R.id.listgrid);
 
-	private void initView() {
-		mainlist = (ListView) findViewById(R.id.classify_mainlist);
-		morelist = (ListView) findViewById(R.id.classify_morelist);
-		mainAdapter = new ClassifyMainAdapter(MainActivity.this, mainList);
-		mainAdapter.setSelectItem(0);
-		mainlist.setAdapter(mainAdapter);
-
-		mainlist.setOnItemClickListener(new OnItemClickListener() {
+		listlistview.setOnClickListener(new OnClickListener() {
 
 			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				initAdapter(Model.MORELISTTXT[position]);
-				mainAdapter.setSelectItem(position);
-				mainAdapter.notifyDataSetChanged();
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				intent.setClass(MainActivity.this, ListListActivity.class);
+				startActivity(intent);
 			}
 		});
-		mainlist.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-		// 一定要设置这个属性，否则ListView不会刷新
-		initAdapter(Model.MORELISTTXT[0]);
 
-		morelist.setOnItemClickListener(new OnItemClickListener() {
+		listgridview.setOnClickListener(new OnClickListener() {
 
 			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				moreAdapter.setSelectItem(position);
-				moreAdapter.notifyDataSetChanged();
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				intent.setClass(MainActivity.this, ListGridActivity.class);
+				startActivity(intent);
 			}
 		});
 	}
 
-	private void initAdapter(String[] array) {
-		moreAdapter = new ClassifyMoreAdapter(this, array);
-		morelist.setAdapter(moreAdapter);
-		moreAdapter.notifyDataSetChanged();
-	}
-
-	private void initModle() {
-		mainList = new ArrayList<Map<String, Object>>();
-		for (int i = 0; i < Model.LISTVIEWIMG.length; i++) {
-			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("img", Model.LISTVIEWIMG[i]);
-			map.put("txt", Model.LISTVIEWTXT[i]);
-			mainList.add(map);
-		}
-	}
 }

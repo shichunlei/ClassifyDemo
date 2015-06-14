@@ -41,4 +41,20 @@ public class Model {
 			{ "全部生活服务", "医院", "银行", "齿科", "宠物", "培训", "快照/冲印", "学校", "旅行社",
 					"购物网站", "干洗店", "家政", "奢侈品护理", "商务楼", "小区", "更多生活服务" },
 			{ "全部家装", "家具家装", "家用电器", "建材", "家装卖场", "装修设计" } };
+
+	public static final String[] toolsList = { "特价", "潮流女装", "品牌男装", "内衣配饰",
+			"精品童装", "家用电器", "手机数码", "电脑办公", "个护化妆", "母婴频道", "美食", "海鲜", "家居家纺",
+			"整车车品", "鞋靴箱包", "运动户外", "图书", "玩具乐器", "钟表", "居家生活", "珠宝饰品", "音像制品",
+			"家具建材", "计生情趣", "营养保健", "奢侈礼品", "生活服务", "旅游出行" };
+
+	public static final int[] iconList = { R.drawable.tejia,
+			R.drawable.nvzhuang, R.drawable.nanzhuang, R.drawable.neiyi,
+			R.drawable.tongzhuang, R.drawable.dianqi, R.drawable.shouji,
+			R.drawable.diannao, R.drawable.huazhuang, R.drawable.muying,
+			R.drawable.meishi, R.drawable.haixian, R.drawable.jiaju,
+			R.drawable.jiaju, R.drawable.nvxie, R.drawable.nanzhuang,
+			R.drawable.shuji, R.drawable.wanju, R.drawable.zhongbiao,
+			R.drawable.shouji, R.drawable.shipin, R.drawable.yingshi,
+			R.drawable.muying, R.drawable.qingqu, R.drawable.haixian,
+			R.drawable.shechipin, R.drawable.jiaju, R.drawable.lvxing };
 }

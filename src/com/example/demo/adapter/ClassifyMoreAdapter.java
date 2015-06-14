@@ -3,7 +3,6 @@ package com.example.demo.adapter;
 import com.example.demo.R;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -43,9 +42,9 @@ public class ClassifyMoreAdapter extends BaseAdapter {
 			hold = (Holder) view.getTag();
 		}
 		hold.txt.setText(text_list[arg0]);
-		hold.txt.setTextColor(Color.parseColor("#FF666666"));
+		hold.txt.setTextColor(0xFF666666);
 		if (arg0 == position) {
-			hold.txt.setTextColor(Color.parseColor("#FFFF8C00"));
+			hold.txt.setTextColor(0xFFFF8C00);
 		}
 		return view;
 	}
