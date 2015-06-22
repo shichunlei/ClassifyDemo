@@ -31,7 +31,16 @@
         android:textColor="#ffffff" />
     
     <Button
-        android:id="@+id/expandable"
+        android:id="@+id/expandableListView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:background="#fe98ff54"
+        android:text="ExpandableListView"
+        android:textColor="#ffffff" />
+    
+    <Button
+        android:id="@+id/expandableGridView"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="5dp"

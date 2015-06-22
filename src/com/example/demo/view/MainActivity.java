@@ -1,4 +1,6 @@
-package com.example.demo;
+package com.example.demo.view;
+
+import com.example.demo.R;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,7 +11,8 @@ import android.widget.Button;
 
 public class MainActivity extends Activity {
 
-	private Button listlistview, listgridview, expandable;
+	private Button listlistview, listgridview, expandableListView,
+			expandableGridView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +20,8 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		listlistview = (Button) findViewById(R.id.listlist);
 		listgridview = (Button) findViewById(R.id.listgrid);
-		expandable = (Button) findViewById(R.id.expandable);
+		expandableListView = (Button) findViewById(R.id.expandableListView);
+		expandableGridView = (Button) findViewById(R.id.expandableGridView);
 
 		listlistview.setOnClickListener(new OnClickListener() {
 
@@ -38,13 +42,25 @@ public class MainActivity extends Activity {
 				startActivity(intent);
 			}
 		});
-		
-		expandable.setOnClickListener(new OnClickListener() {
+
+		expandableListView.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent();
-				intent.setClass(MainActivity.this, ExpandableActivity.class);
+				intent.setClass(MainActivity.this,
+						ExpandableListViewActivity.class);
+				startActivity(intent);
+			}
+		});
+
+		expandableGridView.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				intent.setClass(MainActivity.this,
+						ExpandableGridViewActivity.class);
 				startActivity(intent);
 			}
 		});

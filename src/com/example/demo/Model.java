@@ -57,17 +57,4 @@ public class Model {
 			R.drawable.shouji, R.drawable.shipin, R.drawable.yingshi,
 			R.drawable.muying, R.drawable.qingqu, R.drawable.haixian,
 			R.drawable.shechipin, R.drawable.jiaju, R.drawable.lvxing };
-
-	// 一级标签上的状态图片数据源
-	public static int[] group_state_array = new int[] { R.drawable.group_down,
-			R.drawable.group_up };
-	public static String[] group_title_arry = new String[] { "颈椎测试", "腰部测试", "颈椎测试",
-			"腰部测试" };
-	// 子视图显示文字
-	public static String[][] child_text_array = new String[][] {
-			{ "是否经常感到左臂疼痛？", "是否经常熬夜？", "您的踝关节有刺痛的现象吗？", "是否经常用凉水洗头？" },
-			{ "是否经常感到左臂疼痛？", "是否经常熬夜？", "您的踝关节有刺痛的现象吗？", "是否经常用凉水洗头？" },
-			{ "是否经常感到左臂疼痛？", "是否经常熬夜？", "您的踝关节有刺痛的现象吗？", "是否经常用凉水洗头？" },
-			{ "是否经常感到左臂疼痛？", "是否经常熬夜？", "您的踝关节有刺痛的现象吗？", "是否经常用凉水洗头？" } };
-
 }

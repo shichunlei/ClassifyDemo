@@ -1,4 +1,7 @@
-package com.example.demo;
+package com.example.demo.view;
+
+import com.example.demo.Model;
+import com.example.demo.R;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,7 +16,7 @@ import android.widget.TextView;
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ExpandableListView.OnGroupClickListener;
 
-public class ExpandableActivity extends Activity {
+public class ExpandableListViewActivity extends Activity {
 
 	private ExpandableListView expandableListView;
 
@@ -25,16 +28,15 @@ public class ExpandableActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_expandable);
+		setContentView(R.layout.activity_expandable_listview);
 
 		init();
 		setListener();
-
 	}
 
 	private void init() {
-		group_title_arry = Model.group_title_arry;
-		child_text_array = Model.child_text_array;
+		group_title_arry = Model.LISTVIEWTXT;
+		child_text_array = Model.MORELISTTXT;
 		
 		adapter = new ExpandableListAdapter(this);
 

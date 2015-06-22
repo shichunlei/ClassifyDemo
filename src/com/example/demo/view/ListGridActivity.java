@@ -1,5 +1,7 @@
-package com.example.demo;
+package com.example.demo.view;
 
+import com.example.demo.Model;
+import com.example.demo.R;
 import com.example.demo.fragment.ProTypeFragment;
 
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.view;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,6 +12,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 
+import com.example.demo.Model;
+import com.example.demo.R;
 import com.example.demo.adapter.ClassifyMainAdapter;
 import com.example.demo.adapter.ClassifyMoreAdapter;
 
