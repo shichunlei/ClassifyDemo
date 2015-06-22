@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class MainActivity extends Activity {
 
-	Button listlistview, listgridview;
+	private Button listlistview, listgridview, expandable;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +17,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		listlistview = (Button) findViewById(R.id.listlist);
 		listgridview = (Button) findViewById(R.id.listgrid);
+		expandable = (Button) findViewById(R.id.expandable);
 
 		listlistview.setOnClickListener(new OnClickListener() {
 
@@ -34,6 +35,16 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				Intent intent = new Intent();
 				intent.setClass(MainActivity.this, ListGridActivity.class);
+				startActivity(intent);
+			}
+		});
+		
+		expandable.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				intent.setClass(MainActivity.this, ExpandableActivity.class);
 				startActivity(intent);
 			}
 		});

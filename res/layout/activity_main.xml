@@ -29,5 +29,14 @@
         android:background="#fe987654"
         android:text="ListGridView"
         android:textColor="#ffffff" />
+    
+    <Button
+        android:id="@+id/expandable"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:background="#fe98ff54"
+        android:text="ExpandableListView"
+        android:textColor="#ffffff" />
 
 </LinearLayout>

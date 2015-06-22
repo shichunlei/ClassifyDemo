@@ -22,8 +22,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.demo.ListGridActivity"></activity>
-        <activity android:name="com.example.demo.ListListActivity"></activity>
+        <activity android:name="com.example.demo.ListGridActivity" >
+        </activity>
+        <activity android:name="com.example.demo.ListListActivity" >
+        </activity>
+        <activity android:name="com.example.demo.ExpandableActivity" >
+        </activity>
     </application>
 
 </manifest>
