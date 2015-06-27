@@ -1,20 +1,21 @@
 package com.example.demo.view;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import com.example.demo.Model;
 import com.example.demo.R;
+import com.example.demo.adapter.ExpandableListAdapter;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ExpandableListView.OnGroupClickListener;
+import android.widget.Toast;
 
 public class ExpandableListViewActivity extends Activity {
 
@@ -22,7 +23,7 @@ public class ExpandableListViewActivity extends Activity {
 
 	private ExpandableListAdapter adapter;
 
-	private String[] group_title_arry;
+	private List<Map<String, Object>> list;
 	private String[][] child_text_array;
 
 	@Override
@@ -31,17 +32,14 @@ public class ExpandableListViewActivity extends Activity {
 		setContentView(R.layout.activity_expandable_listview);
 
 		init();
+		initModle();
 		setListener();
 	}
 
 	private void init() {
-		group_title_arry = Model.LISTVIEWTXT;
-		child_text_array = Model.MORELISTTXT;
-		
-		adapter = new ExpandableListAdapter(this);
-
 		expandableListView = (ExpandableListView) findViewById(R.id.list);
-		expandableListView.setAdapter(adapter);
+
+		child_text_array = Model.MORELISTTXT2;
 	}
 
 	private void setListener() {
@@ -50,6 +48,9 @@ public class ExpandableListViewActivity extends Activity {
 			@Override
 			public boolean onGroupClick(ExpandableListView parent, View v,
 					int groupPosition, long id) {
+				Toast.makeText(getApplicationContext(),
+						list.get(groupPosition).get("txt").toString(),
+						Toast.LENGTH_SHORT).show();
 				return false;
 			}
 		});
@@ -59,121 +60,23 @@ public class ExpandableListViewActivity extends Activity {
 			@Override
 			public boolean onChildClick(ExpandableListView parent, View v,
 					int groupPosition, int childPosition, long id) {
+				Toast.makeText(getApplicationContext(),
+						child_text_array[groupPosition][childPosition],
+						Toast.LENGTH_SHORT).show();
 				return false;
 			}
 		});
 	}
 
-	public class ExpandableListAdapter extends BaseExpandableListAdapter {
-
-		private Context context;
-
-		public ExpandableListAdapter(Context context) {
-			this.context = context;
+	private void initModle() {
+		list = new ArrayList<Map<String, Object>>();
+		for (int i = 0; i < Model.LISTVIEWTXT2.length; i++) {
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("txt", Model.LISTVIEWTXT2[i]);
+			list.add(map);
 		}
-
-		/**
-		 * 获取一级标签总数
-		 */
-		@Override
-		public int getGroupCount() {
-			return group_title_arry.length;
-		}
-
-		/**
-		 * 获取一级标签下二级标签的总数
-		 */
-		@Override
-		public int getChildrenCount(int groupPosition) {
-			return child_text_array[groupPosition].length;
-		}
-
-		/**
-		 * 获取一级标签内容
-		 */
-		@Override
-		public Object getGroup(int groupPosition) {
-			return group_title_arry[groupPosition];
-		}
-
-		/**
-		 * 获取一级标签下二级标签的内容
-		 */
-		@Override
-		public Object getChild(int groupPosition, int childPosition) {
-			return child_text_array[groupPosition][childPosition];
-		}
-
-		/**
-		 * 获取一级标签的ID
-		 */
-		@Override
-		public long getGroupId(int groupPosition) {
-			return groupPosition;
-		}
-
-		/**
-		 * 获取二级标签的ID
-		 */
-		@Override
-		public long getChildId(int groupPosition, int childPosition) {
-			return childPosition;
-		}
-
-		/**
-		 * 指定位置相应的组视图
-		 */
-		@Override
-		public boolean hasStableIds() {
-			return true;
-		}
-
-		/**
-		 * 对一级标签进行设置
-		 */
-		@Override
-		public View getGroupView(int groupPosition, boolean isExpanded,
-				View convertView, ViewGroup parent) {
-			convertView = (LinearLayout) LinearLayout.inflate(context,
-					R.layout.group_layout, null);
-
-			TextView group_title = (TextView) convertView
-					.findViewById(R.id.group_title);
-			if (isExpanded) {
-				group_title.setCompoundDrawablesWithIntrinsicBounds(0, 0,
-						R.drawable.group_down, 0);
-			} else {
-				group_title.setCompoundDrawablesWithIntrinsicBounds(0, 0,
-						R.drawable.group_up, 0);
-			}
-			group_title.setText(group_title_arry[groupPosition]);
-
-			return convertView;
-		}
-
-		/**
-		 * 对一级标签下的二级标签进行设置
-		 */
-		@Override
-		public View getChildView(int groupPosition, int childPosition,
-				boolean isLastChild, View convertView, ViewGroup parent) {
-			convertView = (RelativeLayout) RelativeLayout.inflate(context,
-					R.layout.child_layout, null);
-			TextView child_text = (TextView) convertView
-					.findViewById(R.id.child_text);
-
-			child_text.setText(child_text_array[groupPosition][childPosition]);
-
-			return convertView;
-		}
-
-		/**
-		 * 当选择子节点的时候，调用该方法
-		 */
-		@Override
-		public boolean isChildSelectable(int groupPosition, int childPosition) {
-			return true;
-		}
+		adapter = new ExpandableListAdapter(this, list, child_text_array);
+		expandableListView.setAdapter(adapter);
 	}
 
 }

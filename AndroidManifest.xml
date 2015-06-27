@@ -22,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.demo.view.ListGridActivity" >
+        <activity android:name="com.example.demo.view.ScrollGridActivity" >
         </activity>
         <activity android:name="com.example.demo.view.ListListActivity" >
         </activity>

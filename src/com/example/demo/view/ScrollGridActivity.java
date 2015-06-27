@@ -17,7 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-public class ListGridActivity extends FragmentActivity {
+public class ScrollGridActivity extends FragmentActivity {
 
 	private String[] list;
 	private TextView[] tvList;
@@ -31,7 +31,7 @@ public class ListGridActivity extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_listgrid);
+		setContentView(R.layout.activity_scrollgrid);
 		scrollView = (ScrollView) findViewById(R.id.tools_scrlllview);
 		shopAdapter = new ShopAdapter(getSupportFragmentManager());
 		inflater = LayoutInflater.from(this);
@@ -49,7 +49,7 @@ public class ListGridActivity extends FragmentActivity {
 		views = new View[list.length];
 
 		for (int i = 0; i < list.length; i++) {
-			View view = inflater.inflate(R.layout.layout_list, null);
+			View view = inflater.inflate(R.layout.item_list_layout, null);
 			view.setId(i);
 			view.setOnClickListener(toolsItemListener);
 			TextView textView = (TextView) view.findViewById(R.id.text);

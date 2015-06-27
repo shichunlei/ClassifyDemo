@@ -38,7 +38,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent();
-				intent.setClass(MainActivity.this, ListGridActivity.class);
+				intent.setClass(MainActivity.this, ScrollGridActivity.class);
 				startActivity(intent);
 			}
 		});

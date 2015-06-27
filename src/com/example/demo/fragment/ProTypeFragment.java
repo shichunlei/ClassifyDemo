@@ -18,6 +18,7 @@ import android.widget.GridView;
 import android.widget.TextView;
 
 public class ProTypeFragment extends Fragment {
+
 	private ArrayList<Type> list;
 	private GridView gridView;
 	private GridViewAdapter adapter;
@@ -51,7 +52,7 @@ public class ProTypeFragment extends Fragment {
 
 	private void GetTypeList() {
 		list = new ArrayList<Type>();
-		for (int i = 1; i < 31; i++) {
+		for (int i = 1; i < 23; i++) {
 			type = new Type(i, typename + i, icon);
 			list.add(type);
 		}

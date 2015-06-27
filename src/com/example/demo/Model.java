@@ -57,4 +57,11 @@ public class Model {
 			R.drawable.shouji, R.drawable.shipin, R.drawable.yingshi,
 			R.drawable.muying, R.drawable.qingqu, R.drawable.haixian,
 			R.drawable.shechipin, R.drawable.jiaju, R.drawable.lvxing };
+
+	public static String[] LISTVIEWTXT2 = new String[] { "热门分类", "美食", "购物",
+			"家装" };
+	// 第二个listview的文本数据
+	public static String[][] MORELISTTXT2 = { { "全部分类", "小吃快餐", "咖啡厅" },
+			{ "全部美食", "小吃快餐", "西餐", "火锅" }, { "全部购物", "综合商场", "更多购物场所" },
+			{ "全部家装", "家具家装", "家用电器", "建材", "家装卖场", "装修设计" } };
 }

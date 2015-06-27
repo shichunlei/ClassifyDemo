@@ -3,7 +3,9 @@
     <issue id="InflateParams">
         <ignore path="src/com/example/demo/ListGridActivity.java" />
         <ignore path="src/com/example/demo/adapter/ClassifyMoreAdapter.java" />
+        <ignore path="src/com/example/demo/adapter/GoodsCityAdapter.java" />
         <ignore path="src/com/example/demo/fragment/ProTypeFragment.java" />
+        <ignore path="src/com/example/demo/view/ScrollGridActivity.java" />
     </issue>
     <issue id="NewApi">
         <ignore path="src/com/example/demo/adapter/GridViewAdapter.java" />
