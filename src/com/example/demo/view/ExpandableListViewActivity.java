@@ -72,6 +72,7 @@ public class ExpandableListViewActivity extends Activity {
 		list = new ArrayList<Map<String, Object>>();
 		for (int i = 0; i < Model.LISTVIEWTXT2.length; i++) {
 			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("img", Model.LISTVIEWIMG2[i]);
 			map.put("txt", Model.LISTVIEWTXT2[i]);
 			list.add(map);
 		}

@@ -7,6 +7,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -92,6 +93,8 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 		convertView = (LinearLayout) LinearLayout.inflate(context,
 				R.layout.item_group_layout, null);
 
+		ImageView group_icon = (ImageView) convertView
+				.findViewById(R.id.img_icon);
 		TextView group_title = (TextView) convertView
 				.findViewById(R.id.group_title);
 		if (isExpanded) {
@@ -101,6 +104,8 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 			group_title.setCompoundDrawablesWithIntrinsicBounds(0, 0,
 					R.drawable.group_up, 0);
 		}
+		group_icon.setImageResource(Integer.parseInt(list.get(groupPosition)
+				.get("img").toString()));
 		group_title.setText(list.get(groupPosition).get("txt").toString());
 
 		return convertView;
