@@ -44,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="5dp"
-        android:background="#fe98ff54"
+        android:background="#fe923f54"
         android:text="ExpandableListView"
         android:textColor="#ffffff" />
 

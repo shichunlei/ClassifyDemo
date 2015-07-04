@@ -38,7 +38,6 @@
             android:id="@+id/list"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_margin="10dp"
             android:childDivider="#c8c7cc"
             android:divider="@null"
             android:dividerHeight="1px"

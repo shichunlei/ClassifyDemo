@@ -39,7 +39,7 @@ public class ExpandableListViewActivity extends Activity {
 	private void init() {
 		expandableListView = (ExpandableListView) findViewById(R.id.list);
 
-		child_text_array = Model.MORELISTTXT2;
+		child_text_array = Model.EXPANDABLE_MORELIST_TXT;
 	}
 
 	private void setListener() {
@@ -48,9 +48,6 @@ public class ExpandableListViewActivity extends Activity {
 			@Override
 			public boolean onGroupClick(ExpandableListView parent, View v,
 					int groupPosition, long id) {
-				Toast.makeText(getApplicationContext(),
-						list.get(groupPosition).get("txt").toString(),
-						Toast.LENGTH_SHORT).show();
 				return false;
 			}
 		});
@@ -70,10 +67,10 @@ public class ExpandableListViewActivity extends Activity {
 
 	private void initModle() {
 		list = new ArrayList<Map<String, Object>>();
-		for (int i = 0; i < Model.LISTVIEWTXT2.length; i++) {
+		for (int i = 0; i < Model.EXPANDABLE_LISTVIEW_TXT.length; i++) {
 			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("img", Model.LISTVIEWIMG2[i]);
-			map.put("txt", Model.LISTVIEWTXT2[i]);
+			map.put("img", Model.EXPANDABLE_LISTVIEW_IMG[i]);
+			map.put("txt", Model.EXPANDABLE_LISTVIEW_TXT[i]);
 			list.add(map);
 		}
 		adapter = new ExpandableListAdapter(this, list, child_text_array);
