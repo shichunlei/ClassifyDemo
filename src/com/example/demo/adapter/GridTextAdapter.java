@@ -3,7 +3,6 @@ package com.example.demo.adapter;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.demo.Model;
 import com.example.demo.R;
 
 import android.content.Context;
@@ -20,23 +19,14 @@ import android.widget.TextView;
  * @author jayqiu
  * 
  */
-public class GoodsCityAdapter extends BaseAdapter {
+public class GridTextAdapter extends BaseAdapter {
 
 	private List<String> child_text_array = new ArrayList<String>();
 	private Context mContext;
-	int childSize, groupSize;
 
-	public GoodsCityAdapter(Context context, int groupSize, int childSize) {
+	public GridTextAdapter(Context context, List<String> child_text_array) {
 		this.mContext = context;
-		this.childSize = childSize;
-		this.groupSize = groupSize;
-
-		if (child_text_array != null) {
-			child_text_array.clear();
-		}
-		for (int i = 0; i < childSize; i++) {
-			child_text_array.add(Model.MORELISTTXT2[groupSize][i]);
-		}
+		this.child_text_array = child_text_array;
 	}
 
 	@Override
@@ -59,7 +49,7 @@ public class GoodsCityAdapter extends BaseAdapter {
 		ViewHodler viewHodler = null;
 		if (convertView == null) {
 			convertView = LayoutInflater.from(mContext).inflate(
-					R.layout.item_goods_type, null);
+					R.layout.item_gridview_txt, null);
 			viewHodler = new ViewHodler();
 			viewHodler.mTvType = (TextView) convertView
 					.findViewById(R.id.tv_item_goods_type);

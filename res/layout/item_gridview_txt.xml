@@ -9,11 +9,11 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="5dp"
-        android:background="#00ebff"
+        android:background="@drawable/text_item_bg"
         android:gravity="center"
         android:padding="5dp"
         android:singleLine="true"
-        android:textColor="#dfecb2"
+        android:textColor="#ffffff"
         android:textSize="15sp" />
 
 </LinearLayout>

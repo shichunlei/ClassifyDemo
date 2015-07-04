@@ -2,33 +2,36 @@ package com.example.demo.adapter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.demo.R;
 import com.example.demo.customview.MyGridView;
 
-public class ExpandableGridAdapter extends BaseExpandableListAdapter {
+public class ExpandableGridAdapter extends BaseExpandableListAdapter implements
+		OnItemClickListener {
 
-	private String[] group_title_arry;
 	private String[][] child_text_array;
 	private Context context;
 	private MyGridView gridview;
-	List<String> child_array = new ArrayList<String>();
 
-	private int groupSize, childSize;
+	private List<Map<String, Object>> list;
+	List<String> child_array;
 
-	public ExpandableGridAdapter(Context context, String[] group_title_arry,
-			String[][] child_text_array) {
+	public ExpandableGridAdapter(Context context,
+			List<Map<String, Object>> list, String[][] child_text_array) {
 		this.context = context;
-		this.group_title_arry = group_title_arry;
+		this.list = list;
 		this.child_text_array = child_text_array;
 	}
 
@@ -37,7 +40,7 @@ public class ExpandableGridAdapter extends BaseExpandableListAdapter {
 	 */
 	@Override
 	public int getGroupCount() {
-		return group_title_arry.length;
+		return list.size();
 	}
 
 	/**
@@ -45,7 +48,9 @@ public class ExpandableGridAdapter extends BaseExpandableListAdapter {
 	 */
 	@Override
 	public int getChildrenCount(int groupPosition) {
-		return child_text_array[groupPosition].length;
+		// 这里返回1是为了让ExpandableListView只显示一个ChildView，否则在展开
+		// ExpandableListView时会显示和ChildCount数量相同的GridView
+		return 1;
 	}
 
 	/**
@@ -53,7 +58,7 @@ public class ExpandableGridAdapter extends BaseExpandableListAdapter {
 	 */
 	@Override
 	public Object getGroup(int groupPosition) {
-		return group_title_arry[groupPosition];
+		return list.get(groupPosition).get("txt");
 	}
 
 	/**
@@ -95,7 +100,7 @@ public class ExpandableGridAdapter extends BaseExpandableListAdapter {
 	public View getGroupView(int groupPosition, boolean isExpanded,
 			View convertView, ViewGroup parent) {
 		convertView = (LinearLayout) LinearLayout.inflate(context,
-				R.layout.item_group_layout, null);
+				R.layout.item_gridview_group_layout, null);
 
 		TextView group_title = (TextView) convertView
 				.findViewById(R.id.group_title);
@@ -106,16 +111,7 @@ public class ExpandableGridAdapter extends BaseExpandableListAdapter {
 			group_title.setCompoundDrawablesWithIntrinsicBounds(0, 0,
 					R.drawable.group_up, 0);
 		}
-		group_title.setText(group_title_arry[groupPosition]);
-
-		groupSize = groupPosition;
-		if (child_array != null) {
-			child_array.clear();
-		}
-		for (int i = 0; i < getChildrenCount(groupPosition); i++) {
-			child_array.add(child_text_array[groupPosition][i]);
-		}
-
+		group_title.setText(list.get(groupPosition).get("txt").toString());
 		return convertView;
 	}
 
@@ -129,9 +125,13 @@ public class ExpandableGridAdapter extends BaseExpandableListAdapter {
 				R.layout.item_grid_child_layout, null);
 		gridview = (MyGridView) convertView.findViewById(R.id.gridview);
 
-		Log.i("111111", groupSize + "" + childPosition);
-		childSize = childPosition;
-		gridview.setAdapter(new GoodsCityAdapter(context, groupSize, childSize));
+		int size = child_text_array[groupPosition].length;
+		child_array = new ArrayList<String>();
+		for (int i = 0; i < size; i++) {
+			child_array.add(child_text_array[groupPosition][i]);
+		}
+		gridview.setAdapter(new GridTextAdapter(context, child_array));
+		gridview.setOnItemClickListener(this);
 		return convertView;
 	}
 
@@ -141,5 +141,12 @@ public class ExpandableGridAdapter extends BaseExpandableListAdapter {
 	@Override
 	public boolean isChildSelectable(int groupPosition, int childPosition) {
 		return true;
+	}
+
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position,
+			long id) {
+		Toast.makeText(context, "当前选中的是:" + child_array.get(position),
+				Toast.LENGTH_SHORT).show();
 	}
 }
