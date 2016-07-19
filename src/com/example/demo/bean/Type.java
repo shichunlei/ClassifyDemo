@@ -1,6 +1,7 @@
 package com.example.demo.bean;
 
 public class Type {
+
 	private int id;
 	private String typename;
 	private int icon;
